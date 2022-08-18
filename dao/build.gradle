@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(project(":dao:util"))
+    implementation(project(":model"))
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}

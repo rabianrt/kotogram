@@ -1,2 +1,6 @@
 rootProject.name = 'Kotogram'
+include 'dao'
+include 'dao:util'
+include 'model'
+include 'service'
 
