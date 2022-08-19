@@ -1,0 +1,34 @@
+plugins {
+    id 'war'
+    id 'java'
+}
+
+
+
+repositories {
+    mavenCentral()
+    mavenCentral()
+}
+dependencies {
+    // https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+
+
+    testImplementation 'junit:junit:4.11'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+war {
+    archiveFileName = 'ROOT.war'
+}
+task deploy (type: Copy) {
+    from(war.archiveFile.get())
+    into("C:\\Users\\Artem\\work\\apache-tomcat-10.0.22\\webapps")
+}
+
+war.finalizedBy deploy
+deploy.dependsOn war
